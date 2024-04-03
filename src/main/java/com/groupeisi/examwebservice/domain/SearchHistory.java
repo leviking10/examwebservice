@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * A SearchHistory.
@@ -119,6 +120,7 @@ public class SearchHistory implements Serializable {
         return "SearchHistory{" +
             "id=" + getId() +
             ", searchDate='" + getSearchDate() + "'" +
+            ", searchItems=" + searchItems.stream().map(Object::toString).collect(Collectors.joining(", ")) +
             "}";
     }
 }

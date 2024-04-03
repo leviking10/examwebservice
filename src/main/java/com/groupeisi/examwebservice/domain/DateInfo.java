@@ -24,10 +24,6 @@ public class DateInfo implements Serializable {
 
     @Column(name = "day_of_week")
     private String dayOfWeek;
-
-    @Column(name = "d")
-    private String d;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "searchItems" }, allowSetters = true)
     private SearchHistory searchHistory;
@@ -73,19 +69,6 @@ public class DateInfo implements Serializable {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public String getD() {
-        return this.d;
-    }
-
-    public DateInfo d(String d) {
-        this.setD(d);
-        return this;
-    }
-
-    public void setD(String d) {
-        this.d = d;
-    }
-
     public SearchHistory getSearchHistory() {
         return this.searchHistory;
     }
@@ -122,10 +105,8 @@ public class DateInfo implements Serializable {
     @Override
     public String toString() {
         return "DateInfo{" +
-            "id=" + getId() +
             ", date='" + getDate() + "'" +
             ", dayOfWeek='" + getDayOfWeek() + "'" +
-            ", d='" + getD() + "'" +
             "}";
     }
 }
