@@ -2,7 +2,9 @@ package com.groupeisi.examwebservice.service.dto;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * A DTO for the {@link com.groupeisi.examwebservice.domain.SearchHistory} entity.
@@ -47,7 +49,14 @@ public class SearchHistoryDTO implements Serializable {
         }
         return Objects.equals(this.id, searchHistoryDTO.id);
     }
+    private List<DateInfoDTO> searchItems;
+    public List<DateInfoDTO> getSearchItems() {
+        return searchItems;
+    }
 
+    public void setSearchItems(List<DateInfoDTO> searchItems) {
+        this.searchItems = searchItems;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(this.id);
@@ -57,8 +66,11 @@ public class SearchHistoryDTO implements Serializable {
     @Override
     public String toString() {
         return "SearchHistoryDTO{" +
-            "id=" + getId() +
-            ", searchDate='" + getSearchDate() + "'" +
-            "}";
+            "id=" + id +
+            ", searchDate=" + searchDate +
+            ", searchItems=" + (searchItems != null ? searchItems.stream()
+            .map(Object::toString)
+            .collect(Collectors.joining(", ")) : "null") +
+            '}';
     }
 }

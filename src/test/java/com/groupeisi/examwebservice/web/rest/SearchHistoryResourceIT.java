@@ -69,7 +69,7 @@ class SearchHistoryResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static SearchHistory createEntity(EntityManager em) {
-        SearchHistory searchHistory = new SearchHistory().searchDate(DEFAULT_SEARCH_DATE).dateInfo(DEFAULT_DATE_INFO);
+        SearchHistory searchHistory = new SearchHistory().searchDate(DEFAULT_SEARCH_DATE);
         return searchHistory;
     }
 
@@ -80,7 +80,7 @@ class SearchHistoryResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static SearchHistory createUpdatedEntity(EntityManager em) {
-        SearchHistory searchHistory = new SearchHistory().searchDate(UPDATED_SEARCH_DATE).dateInfo(UPDATED_DATE_INFO);
+        SearchHistory searchHistory = new SearchHistory().searchDate(UPDATED_SEARCH_DATE);
         return searchHistory;
     }
 
@@ -106,7 +106,7 @@ class SearchHistoryResourceIT {
         assertThat(searchHistoryList).hasSize(databaseSizeBeforeCreate + 1);
         SearchHistory testSearchHistory = searchHistoryList.get(searchHistoryList.size() - 1);
         assertThat(testSearchHistory.getSearchDate()).isEqualTo(DEFAULT_SEARCH_DATE);
-        assertThat(testSearchHistory.getDateInfo()).isEqualTo(DEFAULT_DATE_INFO);
+
     }
 
     @Test
@@ -181,7 +181,7 @@ class SearchHistoryResourceIT {
         SearchHistory updatedSearchHistory = searchHistoryRepository.findById(searchHistory.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedSearchHistory are not directly saved in db
         em.detach(updatedSearchHistory);
-        updatedSearchHistory.searchDate(UPDATED_SEARCH_DATE).dateInfo(UPDATED_DATE_INFO);
+        updatedSearchHistory.searchDate(UPDATED_SEARCH_DATE);
         SearchHistoryDTO searchHistoryDTO = searchHistoryMapper.toDto(updatedSearchHistory);
 
         restSearchHistoryMockMvc
@@ -197,7 +197,7 @@ class SearchHistoryResourceIT {
         assertThat(searchHistoryList).hasSize(databaseSizeBeforeUpdate);
         SearchHistory testSearchHistory = searchHistoryList.get(searchHistoryList.size() - 1);
         assertThat(testSearchHistory.getSearchDate()).isEqualTo(UPDATED_SEARCH_DATE);
-        assertThat(testSearchHistory.getDateInfo()).isEqualTo(UPDATED_DATE_INFO);
+
     }
 
     @Test
@@ -279,7 +279,7 @@ class SearchHistoryResourceIT {
         SearchHistory partialUpdatedSearchHistory = new SearchHistory();
         partialUpdatedSearchHistory.setId(searchHistory.getId());
 
-        partialUpdatedSearchHistory.searchDate(UPDATED_SEARCH_DATE).dateInfo(UPDATED_DATE_INFO);
+
 
         restSearchHistoryMockMvc
             .perform(
@@ -294,7 +294,7 @@ class SearchHistoryResourceIT {
         assertThat(searchHistoryList).hasSize(databaseSizeBeforeUpdate);
         SearchHistory testSearchHistory = searchHistoryList.get(searchHistoryList.size() - 1);
         assertThat(testSearchHistory.getSearchDate()).isEqualTo(UPDATED_SEARCH_DATE);
-        assertThat(testSearchHistory.getDateInfo()).isEqualTo(UPDATED_DATE_INFO);
+
     }
 
     @Test
@@ -309,7 +309,7 @@ class SearchHistoryResourceIT {
         SearchHistory partialUpdatedSearchHistory = new SearchHistory();
         partialUpdatedSearchHistory.setId(searchHistory.getId());
 
-        partialUpdatedSearchHistory.searchDate(UPDATED_SEARCH_DATE).dateInfo(UPDATED_DATE_INFO);
+
 
         restSearchHistoryMockMvc
             .perform(
@@ -324,7 +324,7 @@ class SearchHistoryResourceIT {
         assertThat(searchHistoryList).hasSize(databaseSizeBeforeUpdate);
         SearchHistory testSearchHistory = searchHistoryList.get(searchHistoryList.size() - 1);
         assertThat(testSearchHistory.getSearchDate()).isEqualTo(UPDATED_SEARCH_DATE);
-        assertThat(testSearchHistory.getDateInfo()).isEqualTo(UPDATED_DATE_INFO);
+
     }
 
     @Test

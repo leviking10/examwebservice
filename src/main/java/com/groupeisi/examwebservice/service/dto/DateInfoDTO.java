@@ -83,10 +83,8 @@ public class DateInfoDTO implements Serializable {
     @Override
     public String toString() {
         return "DateInfoDTO{" +
-            "id=" + getId() +
             ", date='" + getDate() + "'" +
             ", dayOfWeek='" + getDayOfWeek() + "'" +
-            ", searchHistory=" + getSearchHistory() +
             "}";
     }
 }

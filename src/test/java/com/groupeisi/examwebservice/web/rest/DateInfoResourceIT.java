@@ -67,7 +67,7 @@ class DateInfoResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static DateInfo createEntity(EntityManager em) {
-        DateInfo dateInfo = new DateInfo().date(DEFAULT_DATE).dayOfWeek(DEFAULT_DAY_OF_WEEK).d(DEFAULT_D);
+        DateInfo dateInfo = new DateInfo().date(DEFAULT_DATE).dayOfWeek(DEFAULT_DAY_OF_WEEK);
         return dateInfo;
     }
 
@@ -78,7 +78,7 @@ class DateInfoResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static DateInfo createUpdatedEntity(EntityManager em) {
-        DateInfo dateInfo = new DateInfo().date(UPDATED_DATE).dayOfWeek(UPDATED_DAY_OF_WEEK).d(UPDATED_D);
+        DateInfo dateInfo = new DateInfo().date(UPDATED_DATE).dayOfWeek(UPDATED_DAY_OF_WEEK);
         return dateInfo;
     }
 
@@ -103,7 +103,6 @@ class DateInfoResourceIT {
         DateInfo testDateInfo = dateInfoList.get(dateInfoList.size() - 1);
         assertThat(testDateInfo.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testDateInfo.getDayOfWeek()).isEqualTo(DEFAULT_DAY_OF_WEEK);
-        assertThat(testDateInfo.getD()).isEqualTo(DEFAULT_D);
     }
 
     @Test
@@ -178,7 +177,7 @@ class DateInfoResourceIT {
         DateInfo updatedDateInfo = dateInfoRepository.findById(dateInfo.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedDateInfo are not directly saved in db
         em.detach(updatedDateInfo);
-        updatedDateInfo.date(UPDATED_DATE).dayOfWeek(UPDATED_DAY_OF_WEEK).d(UPDATED_D);
+        updatedDateInfo.date(UPDATED_DATE).dayOfWeek(UPDATED_DAY_OF_WEEK);
         DateInfoDTO dateInfoDTO = dateInfoMapper.toDto(updatedDateInfo);
 
         restDateInfoMockMvc
@@ -195,7 +194,6 @@ class DateInfoResourceIT {
         DateInfo testDateInfo = dateInfoList.get(dateInfoList.size() - 1);
         assertThat(testDateInfo.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testDateInfo.getDayOfWeek()).isEqualTo(UPDATED_DAY_OF_WEEK);
-        assertThat(testDateInfo.getD()).isEqualTo(UPDATED_D);
     }
 
     @Test
@@ -275,7 +273,6 @@ class DateInfoResourceIT {
         DateInfo partialUpdatedDateInfo = new DateInfo();
         partialUpdatedDateInfo.setId(dateInfo.getId());
 
-        partialUpdatedDateInfo.date(UPDATED_DATE).d(UPDATED_D);
 
         restDateInfoMockMvc
             .perform(
@@ -291,7 +288,7 @@ class DateInfoResourceIT {
         DateInfo testDateInfo = dateInfoList.get(dateInfoList.size() - 1);
         assertThat(testDateInfo.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testDateInfo.getDayOfWeek()).isEqualTo(DEFAULT_DAY_OF_WEEK);
-        assertThat(testDateInfo.getD()).isEqualTo(UPDATED_D);
+
     }
 
     @Test
@@ -306,7 +303,7 @@ class DateInfoResourceIT {
         DateInfo partialUpdatedDateInfo = new DateInfo();
         partialUpdatedDateInfo.setId(dateInfo.getId());
 
-        partialUpdatedDateInfo.date(UPDATED_DATE).dayOfWeek(UPDATED_DAY_OF_WEEK).d(UPDATED_D);
+        partialUpdatedDateInfo.date(UPDATED_DATE).dayOfWeek(UPDATED_DAY_OF_WEEK);
 
         restDateInfoMockMvc
             .perform(
@@ -322,7 +319,7 @@ class DateInfoResourceIT {
         DateInfo testDateInfo = dateInfoList.get(dateInfoList.size() - 1);
         assertThat(testDateInfo.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testDateInfo.getDayOfWeek()).isEqualTo(UPDATED_DAY_OF_WEEK);
-        assertThat(testDateInfo.getD()).isEqualTo(UPDATED_D);
+
     }
 
     @Test

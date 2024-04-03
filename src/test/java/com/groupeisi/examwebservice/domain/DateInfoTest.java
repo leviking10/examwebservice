@@ -23,15 +23,5 @@ class DateInfoTest {
         assertThat(dateInfo1).isNotEqualTo(dateInfo2);
     }
 
-    @Test
-    void searchHistoryTest() throws Exception {
-        DateInfo dateInfo = getDateInfoRandomSampleGenerator();
-        SearchHistory searchHistoryBack = getSearchHistoryRandomSampleGenerator();
 
-        dateInfo.setSearchHistory(searchHistoryBack);
-        assertThat(dateInfo.getSearchHistory()).isEqualTo(searchHistoryBack);
-
-        dateInfo.searchHistory(null);
-        assertThat(dateInfo.getSearchHistory()).isNull();
-    }
 }
