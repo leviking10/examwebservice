@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20240403194408"
+  },
+  "clientRootFolder": "examWebService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "search_history",
+  "fields": [
+    {
+      "fieldName": "searchDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateInfo",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "examWebService",
+  "name": "SearchHistory",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "dateInfo",
+      "otherEntityRelationshipName": "searchHistory",
+      "relationshipName": "searchItems",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20240403193511"
+  },
+  "clientRootFolder": "examWebService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "date_info",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "dayOfWeek",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "d",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "examWebService",
+  "name": "DateInfo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
